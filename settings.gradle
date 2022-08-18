@@ -1,7 +1,17 @@
+rootProject.name = "projectname"
+
 dependencyResolutionManagement {
   versionCatalogs {
     create("lib") {
       from(files("gradle/lib.versions.toml"))
     }
   }
+}
+
+include(
+  ":shared"
+)
+
+for (child in rootProject.children) {
+  child.projectDir = file("packages/${child.name}")
 }
